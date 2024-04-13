@@ -16,7 +16,7 @@ int main()
     a = loop::Input();
     b = loop::Input();
 
-// Первый вариант ввода данных
+//     first input
 //     cout << "a = ";
 //     cin >> a;
 //     cout << "b = ";
@@ -63,7 +63,7 @@ void loop::Output(string out, int rez)
 int loop::Input()
 {
     int a;
-    cout << "Введите параметр: ";
+    cout << "тАЪ┬в┬е┬д┬и├в┬е ┬п┬а├а┬а┬м┬е├в├а: ";
     cin >> a;
     return a;
 }
