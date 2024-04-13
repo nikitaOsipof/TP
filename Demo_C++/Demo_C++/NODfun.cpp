@@ -16,6 +16,7 @@ int main()
     a = loop::Input();
     b = loop::Input();
 
+// Первый вариант ввода данных
 //     cout << "a = ";
 //     cin >> a;
 //     cout << "b = ";
