@@ -6,6 +6,8 @@ def sum(a, b):
     r = a + b*d
     return r
 
+print("Знакомство с функциями")
+
 a = int(input('Enter 1st number: '))
 b = int(input('Enter 2nd number: '))
 
