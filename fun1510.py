@@ -1,6 +1,6 @@
 
 # Online Python - IDE, Editor, Compiler, Interpreter
-
+# объявление функции
 def sum(a, b):
     d = a / b
     r = a + b*d
