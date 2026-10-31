@@ -1,3 +1,6 @@
+## 2. Требования (SysML Requirement Diagram)
+
+```mermaid
 requirementDiagram
     requirement "REQ-1" {
         id: REQ-1
@@ -13,15 +16,6 @@ requirementDiagram
         text: "Обрабатывать платеж (Payment)"
         risk: high
     }
-    requirement "REQ-1.3" {
-        id: REQ-1.3
-        text: "Отправлять уведомление (Notification)"
-        risk: low
-    }
-
-    REQ-1 -- contain --> REQ-1.1
-    REQ-1 -- contain --> REQ-1.2
-    REQ-1 -- contain --> REQ-1.3
 
     element "OrderService" {
         type: Class
@@ -29,15 +23,10 @@ requirementDiagram
     element "PaymentGateway" {
         type: Class
     }
-    element "EmailService" {
-        type: Class
-    }
-    element "TC_Payment_Test" {
-        type: TestCase
-    }
 
     OrderService -- satisfy --> REQ-1.1
     PaymentGateway -- satisfy --> REQ-1.2
-    EmailService -- satisfy --> REQ-1.3
 
-    TC_Payment_Test -- verify --> REQ-1.2
+    REQ-1 -- contain --> REQ-1.1
+    REQ-1 -- contain --> REQ-1.2
+```
