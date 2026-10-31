@@ -1,45 +1,43 @@
 requirementDiagram
-
-    requirement rider_safety {
+    requirement REQ1 {
         id: 1
-        text: Riders must be able to stop safely in all conditions.
-        risk: high
-        verifymethod: test
+        text: "Система должна обрабатывать заказ"
     }
-
-    functionalRequirement brake_response {
+    requirement REQ1.1 {
         id: 1.1
-        text: Brakes engage within 100 ms of lever pull.
+        text: "Проверять наличие товара (Inventory)"
         risk: medium
-        verifymethod: test
     }
-
-    performanceRequirement stopping_distance {
+    requirement REQ1.2 {
         id: 1.2
-        text: Stop from 25 km/h within 4 m on dry pavement.
-        risk: medium
-        verifymethod: demonstration
+        text: "Обрабатывать платеж (Payment)"
+        risk: high
     }
-
-    designConstraint water_resistance {
+    requirement REQ1.3 {
         id: 1.3
-        text: Brake electronics must be IP67 rated.
+        text: "Отправлять уведомление (Notification)"
         risk: low
-        verifymethod: inspection
     }
 
-    element brake_controller {
-        type: hardware
-        docRef: "specs/brake-controller"
+    REQ1 -- contain --> REQ1.1
+    REQ1 -- contain --> REQ1.2
+    REQ1 -- contain --> REQ1.3
+
+    element "OrderService" {
+        type: Class
+    }
+    element "PaymentGateway" {
+        type: Class
+    }
+    element "EmailService" {
+        type: Class
+    }
+    element "TC_Payment_Test" {
+        type: TestCase
     }
 
-    element road_test_suite {
-        type: "test suite"
-        docRef: "qa/road-tests"
-    }
+    OrderService -- satisfy --> REQ1.1
+    PaymentGateway -- satisfy --> REQ1.2
+    EmailService -- satisfy --> REQ1.3
 
-    rider_safety - contains -> brake_response
-    rider_safety - contains -> stopping_distance
-    brake_response - derives -> water_resistance
-    brake_controller - satisfies -> brake_response
-    road_test_suite - verifies -> stopping_distance
+    TC_Payment_Test -- verify --> REQ1.2
