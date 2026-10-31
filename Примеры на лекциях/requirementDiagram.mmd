@@ -1,2 +1,14 @@
-requirementDiagram requirement "REQ-1.2" { id: 1.2 text: "Принимать онлайн-оплату" risk: high } element "chargeCard()" { type: Function } element "TC_Payment_Test" { type: TestCase } chargeCard() -- satisfy --> REQ-1.2 TC_Payment_Test -- verify --> REQ-1.2
-   
+requirementDiagram 
+requirement "REQ-1.2" { 
+id: 1.2
+text: "Принимать онлайн-оплату" 
+risk: high
+ }
+ element "chargeCard()" {
+ type: Function 
+ } 
+ element "TC_Payment_Test"  {
+ type: TestCase
+ } 
+ chargeCard() -- satisfy --> REQ-1.2 
+ TC_Payment_Test -- verify --> REQ-1.2
