@@ -1,30 +1,9 @@
-## 2. Требования (SysML Requirement Diagram)
-requirementDiagram
-    requirement "REQ-1" {
-        id: REQ-1
-        text: "Система должна обрабатывать заказ"
-    }
-    requirement "REQ-1.1" {
-        id: REQ-1.1
-        text: "Проверять наличие товара (Inventory)"
-        risk: medium
-    }
-    requirement "REQ-1.2" {
-        id: REQ-1.2
-        text: "Обрабатывать платеж (Payment)"
-        risk: high
-    }
+Here is a simple flow chart:
 
-    element "OrderService" {
-        type: Class
-    }
-    element "PaymentGateway" {
-        type: Class
-    }
-
-    OrderService -- satisfy --> REQ-1.1
-    PaymentGateway -- satisfy --> REQ-1.2
-
-    REQ-1 -- contain --> REQ-1.1
-    REQ-1 -- contain --> REQ-1.2
-
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
+```
