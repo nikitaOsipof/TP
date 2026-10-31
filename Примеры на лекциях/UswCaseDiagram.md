@@ -1,4 +1,4 @@
-graph TD
+flowchart LR
     %% Актеры
     User((Клиент))
     Manager((Менеджер))
@@ -24,4 +24,3 @@ graph TD
     style UC2 fill:#bbf,stroke:#333,stroke-width:1px
     style UC3 fill:#bbf,stroke:#333,stroke-width:1px
     style UC4 fill:#bbf,stroke:#333,stroke-width:1px
-
