@@ -1,29 +1,50 @@
-sequenceDiagram
-    autonumber
-    actor Client as Клиент
-    participant OS as OrderService
-    participant PG as PaymentGateway
-    participant ES as EmailService
+```mermaid
+requirementDiagram
+    requirement REQ1 {
+        id: "1"
+        text: "Система должна обрабатывать заказ"
+        risk: High
+        verifymethod: Test
+    }
+    requirement REQ1_1 {
+        id: "1.1"
+        text: "Проверять наличие товара"
+        risk: Medium
+        verifymethod: Test
+    }
+    requirement REQ1_2 {
+        id: "1.2"
+        text: "Обрабатывать платеж"
+        risk: High
+        verifymethod: Test
+    }
+    requirement REQ1_3 {
+        id: "1.3"
+        text: "Отправлять уведомление"
+        risk: Low
+        verifymethod: Test
+    }
 
-    Client->>OS: Создать заказ
-    
-    Note over OS: REQ1_1 Проверка наличия
-    OS->>OS: Проверить остатки на складе
-    
-    alt Товар отсутствует
-        OS-->>Client: Ошибка Товара нет в наличии
-    else Товар в наличии
-        Note over OS,PG: REQ1_2 Обработка платежа
-        OS->>PG: Запрос на проведение оплаты
-        activate PG
-        PG-->>OS: Подтверждение оплаты Успешно
-        deactivate PG
-        
-        Note over OS,ES: REQ1_3 Отправка уведомления
-        OS->>ES: Сформировать письмо клиенту
-        activate ES
-        ES-->>Client: Email Ваш заказ успешно оформлен
-        deactivate ES
-        
-        OS-->>Client: Заказ успешно обработан
-    end
+    element OrderService {
+        type: "Class"
+    }
+    element PaymentGateway {
+        type: "Class"
+    }
+    element EmailService {
+        type: "Class"
+    }
+    element TC_Payment_Test {
+        type: "TestCase"
+    }
+
+    REQ1 - contains -> REQ1_1
+    REQ1 - contains -> REQ1_2
+    REQ1 - contains -> REQ1_3
+
+    OrderService - satisfies -> REQ1_1
+    PaymentGateway - satisfies -> REQ1_2
+    EmailService - satisfies -> REQ1_3
+
+    TC_Payment_Test - verifies -> REQ1_2
+```
