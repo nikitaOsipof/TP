@@ -126,6 +126,8 @@ stateDiagram-v2
 ```
 ---
 
+---
+
 ## 6. Детальный алгоритм валидации карт (Low-Level Activity Diagram)
 
 Диаграмма описывает внутреннюю логику низкоуровневой функции проверки номера карты по алгоритму Луна (Luhn Algorithm) внутри компонента `PaymentGateway`. Каждый блок схемы соответствует конкретной строке или логическому условию в коде программиста.
@@ -137,8 +139,8 @@ flowchart TD
     
     CheckDigits -->|Нет| RetFalse1[Возврат: false]
     
-    CheckDigits -->|Да| InitVars[3. Инициализировать variables:<br/>int sum = 0<br/>bool alternate = false]
-    InitVars --> LoopStart[4. Цикл с конца строки:<br/>int i = cardNumber.Length - 1]
+    CheckDigits -->|Да| InitVars["3. Инициализировать variables:<br/>int sum = 0<br/>bool alternate = false"]
+    InitVars --> LoopStart["4. Цикл с конца строки:<br/>int i = cardNumber.Length - 1"]
     
     LoopStart --> LoopCheck{i >= 0 ?}
     
@@ -146,19 +148,19 @@ flowchart TD
     FinalCheck -->|Да| RetTrue([Возврат: true])
     FinalCheck -->|Нет| RetFalse2([Возврат: false])
     
-    LoopCheck -->|Да / Итерация| GetDigit[6. Перевести символ в цифру:<br/>int n = cardNumber[i] - '0']
+    LoopCheck -->|Да / Итерация| GetDigit["6. Перевести символ в цифру:<br/>int n = cardNumber[i] - 0"]
     GetDigit --> CheckAlt{7. Переменная alternate == true?}
     
-    CheckAlt -->|Да| Multiply[8. Умножить цифру на 2:<br/>n = n * 2]
+    CheckAlt -->|Да| Multiply["8. Умножить цифру на 2:<br/>n = n * 2"]
     Multiply --> CheckNine{9. n > 9 ?}
-    CheckNine -->|Да| Subtract[10. n = n - 9]
+    CheckNine -->|Да| Subtract["10. n = n - 9"]
     CheckNine -->|Нет| ToggleAlt
     Subtract --> ToggleAlt
     
-    CheckAlt -->|Нет| ToggleAlt[11. Прибавить к общей сумме:<br/>sum = sum + n]
-    ToggleAlt --> NextIter[12. Инвертировать флаг:<br/>alternate = !alternate]
+    CheckAlt -->|Нет| ToggleAlt["11. Прибавить к общей сумме:<br/>sum = sum + n"]
+    ToggleAlt --> NextIter["12. Инвертировать флаг:<br/>alternate = !alternate"]
     
-    NextIter --> Decrement[13. i = i - 1]
+    NextIter --> Decrement["13. i = i - 1"]
     Decrement --> LoopCheck
 
     style CheckDigits fill:#fff2cc,stroke:#d6b656
