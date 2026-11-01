@@ -36,7 +36,11 @@ flowchart TD
 
 ---
 
+---
+
 ## 2. Границы системы и прецеденты (Use Case Diagram)
+
+Диаграмма вариантов использования определяет внешних актеров и ключевые функции системы. Связи «include» показывают, что проверка склада, оплата и уведомление являются обязательными частями процесса создания заказа.
 
 ```mermaid
 flowchart LR
@@ -52,17 +56,15 @@ flowchart LR
     User --> UC3
     Manager --> UC2
 
-    UC1 -.-> UC2
-    UC1 -.-> UC3
-    UC1 -.-> UC4
+    UC1 -->|«include»| UC2
+    UC1 -->|«include»| UC3
+    UC1 -->|«include»| UC4
 
-    style UC1 fill:#f9f,stroke:#333
-    style UC2 fill:#bbf,stroke:#333
-    style UC3 fill:#bbf,stroke:#333
-    style UC4 fill:#bbf,stroke:#333
+    style UC1 fill:#f9f,stroke:#333,stroke-width:2px
+    style UC2 fill:#bbf,stroke:#333,stroke-width:1px
+    style UC3 fill:#bbf,stroke:#333,stroke-width:1px
+    style UC4 fill:#bbf,stroke:#333,stroke-width:1px
 ```
-
----
 
 ## 3. Бизнес-процесс обработки платежа (Activity Diagram)
 
