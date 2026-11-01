@@ -124,8 +124,13 @@ stateDiagram-v2
     Доставлен --> [*]
     Возврат --> Создан : Повторный круг (опционально)
 ```
-## 6. Метод валидации номера банковской карты по алгоритму Луна (Luhn Algorithm) (Activity Diagram)
-'''mermaid
+---
+
+## 6. Детальный алгоритм валидации карт (Low-Level Activity Diagram)
+
+Диаграмма описывает внутреннюю логику низкоуровневой функции проверки номера карты по алгоритму Луна (Luhn Algorithm) внутри компонента `PaymentGateway`. Каждый блок схемы соответствует конкретной строке или логическому условию в коде программиста.
+
+```mermaid
 flowchart TD
     Start([Вход: string cardNumber]) --> Clear[1. Удалить пробелы и дефисы из строки]
     Clear --> CheckDigits{2. Строка состоит только из цифр?}
@@ -164,4 +169,4 @@ flowchart TD
     style RetFalse1 fill:#f8cecc,stroke:#b85450
     style RetFalse2 fill:#f8cecc,stroke:#b85450
     style RetTrue fill:#d5e8d4,stroke:#82b366
-'''
+```
